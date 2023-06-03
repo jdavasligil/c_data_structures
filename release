@@ -1,8 +1,9 @@
 #!/bin/dash
 clang \
           -fuse-ld=mold \
+          -Ofast \
           src/linked_list.c \
           src/main.c \
           src/test.c \
           -o \
-          target/out
+          target/release/out
