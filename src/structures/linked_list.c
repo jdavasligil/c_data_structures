@@ -47,7 +47,7 @@ Node *new_node(void *data) {
 }
 
 Node *new_node_from_str(char *s) {
-    void *data = malloc(CACHE_LINE_LENGTH);
+    void *data = malloc(CACHE_LINE_LENGTH - sizeof(Node));
 
     strcpy((char *)data, s);
 
