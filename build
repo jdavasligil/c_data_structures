@@ -1,4 +1,22 @@
 #!/bin/dash
+rflag=
+while getopts r c
+do
+    case $c in
+    r) rflag=1;;
+    esac
+done
+if [ ! -z "$rflag" ]
+then
+clang \
+          -fuse-ld=mold \
+          -Ofast \
+          src/linked_list.c \
+          src/main.c \
+          src/test.c \
+          -o \
+          target/out
+else
 clang \
           -fuse-ld=mold \
           src/linked_list.c \
@@ -6,3 +24,4 @@ clang \
           src/test.c \
           -o \
           target/out
+fi
