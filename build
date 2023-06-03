@@ -1,0 +1,6 @@
+#!/bin/dash
+clang -fuse-ld=mold \
+               src/linked_list.c \
+               src/main.c \
+               src/test.c \
+               -o bin/out
