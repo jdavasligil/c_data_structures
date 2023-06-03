@@ -1,4 +1,6 @@
 #!/bin/dash
+structure=src/structures/linked_list.c
+
 rflag=
 while getopts r c
 do
@@ -11,17 +13,15 @@ then
 clang \
           -fuse-ld=mold \
           -Ofast \
-          src/linked_list.c \
-          src/main.c \
-          src/test.c \
+          $structure \
+          src/*.c \
           -o \
-          target/out
+          target/release/out
 else
 clang \
           -fuse-ld=mold \
-          src/linked_list.c \
-          src/main.c \
-          src/test.c \
+          $structure \
+          src/*.c \
           -o \
           target/out
 fi
