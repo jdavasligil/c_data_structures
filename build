@@ -20,6 +20,7 @@ clang \
 else
 clang \
           -fuse-ld=mold \
+          -Weverything \
           $structure \
           src/*.c \
           -o \

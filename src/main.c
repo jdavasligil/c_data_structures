@@ -1,10 +1,11 @@
+#include "test.h"
+#include "structures/linked_list.h"
+
 #include <stdio.h>
 #include <stdlib.h>
-#include "structures/linked_list.h"
-#include "test.h"
 
 
-int main(int arc, char *argv[]) {
+int main(int argc, char *argv[]) {
 
     test_linked_list();
 
