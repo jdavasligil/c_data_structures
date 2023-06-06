@@ -1,4 +1,5 @@
 #include "test.h"
+#include "structures/queue.h"
 #include "structures/linked_list.h"
 
 #include <stdio.h>
@@ -11,15 +12,15 @@ void test_linked_list(void) {
 
     printf("Testing...\n");
 
-    push(&lst, new_node_from_str("A"));
-    assert(*(char *)peek(&lst) == 'A');
+    ll_push(&lst, new_ll_node_from_str("A"));
+    assert(*(char *)ll_peek(&lst) == 'A');
 
-    push(&lst, new_node_from_str("B"));
-    assert(*(char *)peek(&lst) == 'B');
+    ll_push(&lst, new_ll_node_from_str("B"));
+    assert(*(char *)ll_peek(&lst) == 'B');
 
-    display(&lst);
+    ll_display(&lst);
 
-    pop_val = pop(&lst);
+    pop_val = ll_pop(&lst);
 
     printf("Pop: %s\n", (char *)pop_val);
     assert(*(char *)pop_val == 'B');
@@ -28,7 +29,10 @@ void test_linked_list(void) {
         free(pop_val);
     }
 
-    display(&lst);
+    ll_display(&lst);
+
+    ll_destroy(&lst);
+    assert(lst.head == NULL);
 
     printf("Test Successful\n");
 }

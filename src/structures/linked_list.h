@@ -1,26 +1,27 @@
 #ifndef LINKED_LIST
 #define LINKED_LIST
 
-#define CACHE_LINE_LENGTH 64
 
-struct Node;
+struct LLNode;
 struct LinkedList;
 
 typedef struct LinkedList {
-    struct Node *head;
+    struct LLNode *head;
 } LinkedList;
 
-typedef struct Node {
+typedef struct LLNode {
     void *data;
-    struct Node *next;
-} Node;
+    struct LLNode *next;
+} LLNode;
 
-void push(LinkedList *self, Node *node);
-void *pop(LinkedList *self);
-void *peek(LinkedList *self);
-void display(LinkedList *self);
+void ll_push(LinkedList *self, LLNode *node);
+void *ll_pop(LinkedList *self);
+void *ll_peek(LinkedList *self);
+void ll_display(LinkedList *self);
 
-Node *new_node(void *data);
-Node *new_node_from_str(char *s);
+LLNode *new_ll_node(void *data);
+LLNode *new_ll_node_from_str(char *s);
+
+void ll_destroy(LinkedList *self);
 
 #endif

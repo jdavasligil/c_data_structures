@@ -1,5 +1,4 @@
 #include "test.h"
-#include "structures/linked_list.h"
 
 #include <stdio.h>
 #include <stdlib.h>

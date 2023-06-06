@@ -1,18 +1,20 @@
 #include "linked_list.h"
+#include "constants.h"
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
 
 
-void push(LinkedList *self, Node *node) {
-    Node *tmp = self->head;
+void ll_push(LinkedList *self, LLNode *node) {
+    LLNode *tmp = self->head;
     self->head = node;
     node->next = tmp;
 }
 
-void* pop(LinkedList *self) {
+void* ll_pop(LinkedList *self) {
     void *data = NULL;
-    Node *del_node = self->head;
+    LLNode *del_node = self->head;
 
     if (del_node) {
         data = del_node->data;
@@ -24,12 +26,12 @@ void* pop(LinkedList *self) {
     return data;
 }
 
-void *peek(LinkedList *self) {
+void *ll_peek(LinkedList *self) {
     return self->head->data;
 }
 
-void display(LinkedList *self) {
-    Node *ptr = self->head;
+void ll_display(LinkedList *self) {
+    LLNode *ptr = self->head;
 
     while (ptr) {
         printf("%s\n", (char *)(ptr->data));
@@ -37,8 +39,8 @@ void display(LinkedList *self) {
     }
 }
 
-Node *new_node(void *data) {
-    Node *node = (Node *)malloc(sizeof(Node));
+LLNode *new_ll_node(void *data) {
+    LLNode *node = (LLNode *)malloc(sizeof(LLNode));
 
     node->data = data;
     node->next = NULL;
@@ -46,10 +48,16 @@ Node *new_node(void *data) {
     return node;
 }
 
-Node *new_node_from_str(char *s) {
-    void *data = malloc(CACHE_LINE_LENGTH - sizeof(Node));
+LLNode *new_ll_node_from_str(char *s) {
+    void *data = malloc(CACHE_LINE_LENGTH - sizeof(LLNode));
 
     strcpy((char *)data, s);
 
-    return new_node(data); 
+    return new_ll_node(data); 
+}
+
+void ll_destroy(LinkedList *self) {
+    while (self->head) {
+        free(ll_pop(self));
+    }
 }
