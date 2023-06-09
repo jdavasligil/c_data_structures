@@ -1,6 +1,9 @@
 #ifndef LINKED_LIST
 #define LINKED_LIST
 
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 
 struct LLNode;
 struct LinkedList;

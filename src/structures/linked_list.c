@@ -1,11 +1,6 @@
 #include "linked_list.h"
 #include "constants.h"
 
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-
-
 void ll_push(LinkedList *self, LLNode *node) {
     LLNode *tmp = self->head;
     self->head = node;

@@ -1,8 +1,10 @@
 #ifndef SKIP_LIST
 #define SKIP_LIST
 
-#define CACHE_LINE_LENGTH 64
-#define MAX_HEIGHT 12
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+#include "constants.h"
 
 struct Node;
 struct SkipList;

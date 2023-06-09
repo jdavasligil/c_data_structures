@@ -1,8 +1,4 @@
 #include "skip_list.h"
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-
 
 Node *new_node(unsigned int key, void *value) {
     Node *node = (Node *)malloc(sizeof(Node));
@@ -10,9 +6,9 @@ Node *new_node(unsigned int key, void *value) {
     node->key = key;
     node->value = value;
     node->height = 0;
-    node->lanes = (Node *)malloc(MAX_HEIGHT * sizeof(Node));
+    node->lanes = (Node *)malloc(MAX_SKIP_HEIGHT * sizeof(Node));
 
-    for (int i = 0; i < MAX_HEIGHT; ++i) {
+    for (int i = 0; i < MAX_SKIP_HEIGHT; ++i) {
         node->lanes[i] = NULL;
     }
 
