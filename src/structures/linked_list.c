@@ -1,5 +1,4 @@
 #include "linked_list.h"
-#include "constants.h"
 
 void ll_push(LinkedList *self, LLNode *node) {
     LLNode *tmp = self->head;

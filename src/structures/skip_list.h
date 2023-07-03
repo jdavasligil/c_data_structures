@@ -6,28 +6,30 @@
 #include <stdlib.h>
 #include "constants.h"
 
-struct Node;
+struct SLNode;
 struct SkipList;
 
 typedef struct SkipList {
-    struct Node *head;
+    struct SLNode *head;
     unsigned int size;
 } SkipList;
 
-typedef struct Node {
+typedef struct SLNode {
     unsigned int key;
     void *value;
     unsigned int height;
-    struct Node **lanes;
-} Node;
+    struct SLNode **lanes;
+} SLNode;
 
-void insert(SkipList *self, Node *node);
-void remove(SkipList *self, unsigned int key);
-void find(SkipList *self, unsigned int key);
-void display(SkipList *self);
-void destroy(SkipList *self);
+void sl_insert(SkipList *self, SLNode *node);
+void sl_remove(SkipList *self, unsigned int key);
+void sl_find(SkipList *self, unsigned int key);
+void sl_display(SkipList *self);
+void sl_destroy(SkipList *self);
 
-Node *new_node(void *data);
-Node *new_node_from_str(char *s);
+SLNode *new_sl_node(unsigned int key, void *data);
+SLNode *new_sl_node_from_str(unsigned int key, char *s);
+
+void sl_destroy(SkipList *self);
 
 #endif

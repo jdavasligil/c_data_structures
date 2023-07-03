@@ -5,6 +5,8 @@
 #include <string.h>
 #include <stdlib.h>
 
+#include "constants.h"
+
 struct LLNode;
 struct LinkedList;
 

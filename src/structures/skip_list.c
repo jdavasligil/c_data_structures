@@ -1,12 +1,12 @@
 #include "skip_list.h"
 
-Node *new_node(unsigned int key, void *value) {
-    Node *node = (Node *)malloc(sizeof(Node));
+SLNode *new_node(unsigned int key, void *value) {
+    SLNode *node = (SLNode *)malloc(sizeof(SLNode));
 
     node->key = key;
     node->value = value;
     node->height = 0;
-    node->lanes = (Node *)malloc(MAX_SKIP_HEIGHT * sizeof(Node));
+    node->lanes = (SLNode **)malloc(MAX_SKIP_HEIGHT * sizeof(SLNode*));
 
     for (int i = 0; i < MAX_SKIP_HEIGHT; ++i) {
         node->lanes[i] = NULL;
@@ -15,10 +15,10 @@ Node *new_node(unsigned int key, void *value) {
     return node;
 }
 
-Node *new_node_from_str(unsigned int key, char *s) {
-    void *data = malloc(2 * CACHE_LINE_LENGTH - sizeof(Node));
+SLNode *new_sl_node_from_str(unsigned int key, char *s) {
+    void *data = malloc(2 * CACHE_LINE_LENGTH - sizeof(SLNode));
 
     strcpy((char *)data, s);
 
-    return new_node(key, data); 
+    return new_sl_node(key, data); 
 }
